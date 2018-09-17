@@ -23,8 +23,10 @@
                 <td>@Html.TextBoxFor(m => Model.Flight.FuelForTakoff, new { placeholder = "Fuel for take-off", })</td>
             </tr>
             <tr>
-                <td>Distance : @Math.Round(Model.Flight.Distance.Value,2) km</td>
-                <td>Fuel consumption : @Math.Round(Model.Flight.FuelConsumption.Value,2) L</td>
+                <td>Distance : @Math.Round(Model.Flight.Distance.Value, 2) km</td>
+            </tr>
+            <tr>
+                <td>Fuel : @Math.Round(Model.Flight.FuelConsumption.Value, 2) L</td>
             </tr>
         </table>
         <input type="submit" value="Save" class="input-sm" />
