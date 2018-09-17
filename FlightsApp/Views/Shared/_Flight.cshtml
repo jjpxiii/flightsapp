@@ -1,0 +1,58 @@
+﻿@model FlightsApp.ViewModels.FlightViewModel
+@{
+}
+
+@if (Model.IsEdit)
+{
+    @using (Html.BeginForm("Edit", "Flight", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => Model.Flight.InternalId)
+        <table class="table-bordered table-responsive">
+            <tr>
+                <td>@Html.TextBoxFor(m => Model.Flight.DepartureAirport.Name, new { placeholder = "Departure Airport Name", })</td>
+                <td>@Html.TextBoxFor(m => Model.Flight.DepartureAirport.Latitude, new { placeholder = "Departure Airport Lat", })</td>
+                <td>@Html.TextBoxFor(m => Model.Flight.DepartureAirport.Longitude, new { placeholder = "Departure Airport Long", })</td>
+            </tr>
+            <tr>
+                <td>@Html.TextBoxFor(m => Model.Flight.ArrivalAirport.Name, new { placeholder = "Arrival Airport Name", })</td>
+                <td>@Html.TextBoxFor(m => Model.Flight.ArrivalAirport.Latitude, new { placeholder = "Arrival Airport Lat", })</td>
+                <td>@Html.TextBoxFor(m => Model.Flight.ArrivalAirport.Longitude, new { placeholder = "Arrival Airport Long", })</td>
+            </tr>
+            <tr>
+                <td>@Html.TextBoxFor(m => Model.Flight.FuelPerKilometre, new { placeholder = "Fuel (L/km)", })</td>
+                <td>@Html.TextBoxFor(m => Model.Flight.FuelForTakoff, new { placeholder = "Fuel for take-off", })</td>
+            </tr>
+            <tr>
+                <td>Distance : @Math.Round(Model.Flight.Distance.Value,2) km</td>
+                <td>Fuel consumption : @Math.Round(Model.Flight.FuelConsumption.Value,2) L</td>
+            </tr>
+        </table>
+        <input type="submit" value="Save" class="input-sm" />
+
+    }
+}
+else
+{
+    @using (Html.BeginForm("Add", "Flight", FormMethod.Post))
+    {
+        <table class="table-bordered table-responsive">
+            <tr>
+                <td>@Html.TextBoxFor(m => Model.Flight.DepartureAirport.Name, new { placeholder = "Departure Airport Name", })</td>
+                <td>@Html.TextBoxFor(m => Model.Flight.DepartureAirport.Latitude, new { placeholder = "Departure Airport Lat", })</td>
+                <td>@Html.TextBoxFor(m => Model.Flight.DepartureAirport.Longitude, new { placeholder = "Departure Airport Long", })</td>
+            </tr>
+            <tr>
+                <td>@Html.TextBoxFor(m => Model.Flight.ArrivalAirport.Name, new { placeholder = "Arrival Airport Name", })</td>
+                <td>@Html.TextBoxFor(m => Model.Flight.ArrivalAirport.Latitude, new { placeholder = "Arrival Airport Lat", })</td>
+                <td>@Html.TextBoxFor(m => Model.Flight.ArrivalAirport.Longitude, new { placeholder = "Arrival Airport Long", })</td>
+            </tr>
+            <tr>
+                <td>@Html.TextBoxFor(m => Model.Flight.FuelPerKilometre, new { placeholder = "Fuel per km", })</td>
+                <td>@Html.TextBoxFor(m => Model.Flight.FuelForTakoff, new { placeholder = "Fuel for take-off", })</td>
+
+            </tr>
+        </table>
+        <input type="submit" value="Add" />
+
+    }
+}

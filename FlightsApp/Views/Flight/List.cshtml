@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Flights App";
+}
+@model FlightsApp.ViewModels.FlightListViewModel
+
+@if (TempData["hasBeenEdited"] != null && (bool)TempData["hasBeenEdited"])
+{
+    <h4>Flight changes have been saved</h4>
+}
+<h2>Flights List</h2>
+
+@foreach (var flightViewModel in Model.FlightsList)
+{
+    @Html.Partial("../Shared/_Flight", flightViewModel)
+    <br />
+}

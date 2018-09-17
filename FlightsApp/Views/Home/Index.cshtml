@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Flights App";
+}
+@model FlightsApp.ViewModels.FlightViewModel
+
+@if (TempData["isNew"] != null && (bool)TempData["isNew"])
+{
+    <h4>Flight added</h4>   
+    <input type="hidden" value="@(TempData["isNew"] = false)" />
+}
+<h2>Add a flight</h2>
+@Html.Partial("../Shared/_Flight", Model)
